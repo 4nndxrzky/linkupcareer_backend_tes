@@ -142,9 +142,15 @@ Sisipkan screenshot hasil testing atau dokumentasi API di bawah ini.
 
 ### Contoh (ganti dengan file Anda sendiri)
 
-![Create user](docs/screenshots/create-user.png)
+![Get user](public/get-users.png)
 
-![Get user list](docs/screenshots/list-users.png)
+![Get user by ID](public/get-user-by-id.png)
+
+![Create user](public/create-users.png)
+
+![Update user](public/update-user.png)
+
+![Delete user](public/delete-user.png)
 
 ---
 
