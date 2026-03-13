@@ -142,7 +142,7 @@ Sisipkan screenshot hasil testing atau dokumentasi API di bawah ini.
 
 ### Contoh (ganti dengan file Anda sendiri)
 
-![Get user](public/get-users.png)
+![Get user](public/get-user.png)
 
 ![Get user by ID](public/get-user-by-id.png)
 
