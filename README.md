@@ -136,12 +136,6 @@ curl -X POST http://127.0.0.1:8000/api/users \
 
 ## 📸 Dokumentasi / Screenshot API Testing
 
-Sisipkan screenshot hasil testing atau dokumentasi API di bawah ini.
-
-> **Tip:** Simpan gambar di folder `docs/screenshots/` atau `docs/images/` lalu referensikan di markdown.
-
-### Contoh (ganti dengan file Anda sendiri)
-
 ![Get user](public/get-user.png)
 
 ![Get user by ID](public/get-user-by-id.png)
