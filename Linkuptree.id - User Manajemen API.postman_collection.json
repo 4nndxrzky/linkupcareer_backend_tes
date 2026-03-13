@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "1acbd77f-d36a-430a-a308-17a271faf637",
+		"name": "Linkuptree.id - User Manajemen API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22842110"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/users",
+					"host": ["{{base_url}}api"],
+					"path": ["users"]
+				},
+				"description": "## Mendapatkan Daftar Semua User\n\nEndpoint ini digunakan untuk mengambil daftar semua pengguna yang terdaftar dalam sistem.\n\n---\n\n### Detail Endpoint\n\n| Properti | Nilai |\n|----------|-------|\n| **HTTP Method** | `GET` |\n| **URL** | `{{base_url}}api/users` |\n| **Autentikasi** | Tidak diperlukan |\n| **Request Body** | Tidak diperlukan |\n\n---\n\n### Contoh Respons\n\n**Status Code:** `200 OK`\n\n```json\n{\n  \"success\": true,\n  \"message\": \"List Data User\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Budi Santoso\",\n      \"employee_id\": \"EMP001\",\n      \"email\": \"budi@example.com\",\n      \"position\": \"Backend Developer\",\n      \"status\": \"staf\",\n      \"date_of_birth\": \"1995-08-17\",\n      \"created_at\": \"2024-01-15T08:00:00.000000Z\",\n      \"updated_at\": \"2024-01-15T08:00:00.000000Z\"\n    }\n  ]\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}api/users/1",
+					"host": ["{{base_url}}api"],
+					"path": ["users", "1"]
+				},
+				"description": "## Mendapatkan Detail User Berdasarkan ID\n\nEndpoint ini digunakan untuk mengambil data satu pengguna berdasarkan ID.\n\n---\n\n### Detail Endpoint\n\n| Properti | Nilai |\n|----------|-------|\n| **HTTP Method** | `GET` |\n| **URL** | `{{base_url}}api/users/{id}` |\n| **Autentikasi** | Tidak diperlukan |\n\n---\n\n### Path Parameter\n\n| Parameter | Tipe | Deskripsi |\n|-----------|------|-----------|\n| `id` | `integer` | ID user yang ingin ditampilkan |\n\n---\n\n### Contoh Respons\n\n**Status Code:** `200 OK`\n```json\n{\n  \"success\": true,\n  \"message\": \"Detail Data User\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Budi Santoso\",\n    \"employee_id\": \"EMP001\",\n    \"email\": \"budi@example.com\",\n    \"position\": \"Backend Developer\",\n    \"status\": \"staf\",\n    \"date_of_birth\": \"1995-08-17\",\n    \"created_at\": \"2024-01-15T08:00:00.000000Z\",\n    \"updated_at\": \"2024-01-15T08:00:00.000000Z\"\n  }\n}\n```\n\n**Status Code:** `404 Not Found`\n```json\n{\n  \"success\": false,\n  \"message\": \"User tidak ditemukan.\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi Santoso\",\n    \"employee_id\": \"EMP001\",\n    \"email\": \"budi@example.com\",\n    \"password\": \"password123\",\n    \"position\": \"Backend Developer\",\n    \"status\": \"staf\",\n    \"date_of_birth\": \"1995-08-17\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/users",
+					"host": ["{{base_url}}api"],
+					"path": ["users"]
+				},
+				"description": "## Menambahkan User Baru (Register)\n\nEndpoint ini digunakan untuk mendaftarkan pengguna baru ke dalam sistem.\n\n---\n\n### Detail Endpoint\n\n| Properti | Nilai |\n|----------|-------|\n| **HTTP Method** | `POST` |\n| **URL** | `{{base_url}}api/users` |\n| **Content-Type** | `application/json` |\n\n---\n\n### Request Body\n\n| Field | Tipe | Wajib | Deskripsi |\n|-------|------|-------|-----------|\n| `name` | `string` | ✅ | Nama lengkap pengguna |\n| `employee_id` | `string` | ✅ | ID karyawan (harus unik) |\n| `email` | `string` | ✅ | Alamat email valid (harus unik) |\n| `password` | `string` | ✅ | Password minimal 8 karakter |\n| `position` | `string` | ✅ | Jabatan/posisi pengguna |\n| `status` | `enum` | ✅ | Harus salah satu: `intern` atau `staf` |\n| `date_of_birth` | `date` | ✅ | Format: `YYYY-MM-DD`, harus sebelum hari ini |\n\n---\n\n### Contoh Respons\n\n**Status Code:** `201 Created`\n```json\n{\n  \"success\": true,\n  \"message\": \"User berhasil ditambahkan.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Budi Santoso\",\n    \"employee_id\": \"EMP001\",\n    \"email\": \"budi@example.com\",\n    \"position\": \"Backend Developer\",\n    \"status\": \"staf\",\n    \"date_of_birth\": \"1995-08-17\",\n    \"created_at\": \"2024-01-15T08:00:00.000000Z\",\n    \"updated_at\": \"2024-01-15T08:00:00.000000Z\"\n  }\n}\n```\n\n**Status Code:** `422 Unprocessable Content` (Validasi Gagal)\n```json\n{\n  \"success\": false,\n  \"message\": \"Validasi gagal.\",\n  \"errors\": {\n    \"email\": [\"Email sudah terdaftar.\"],\n    \"employee_id\": [\"Employee ID sudah digunakan.\"]\n  }\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi Santoso Updated\",\n    \"position\": \"Senior Backend Developer\",\n    \"status\": \"staf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}api/users/1",
+					"host": ["{{base_url}}api"],
+					"path": ["users", "1"]
+				},
+				"description": "## Mengupdate Data User\n\nEndpoint ini digunakan untuk memperbarui data pengguna yang sudah ada. Hanya kirim field yang ingin diubah (partial update diizinkan).\n\n---\n\n### Detail Endpoint\n\n| Properti | Nilai |\n|----------|-------|\n| **HTTP Method** | `PUT` |\n| **URL** | `{{base_url}}api/users/{id}` |\n| **Content-Type** | `application/json` |\n\n---\n\n### Path Parameter\n\n| Parameter | Tipe | Deskripsi |\n|-----------|------|-----------|\n| `id` | `integer` | ID user yang ingin diupdate |\n\n---\n\n### Request Body (semua field opsional)\n\n| Field | Tipe | Deskripsi |\n|-------|------|-----------|\n| `name` | `string` | Nama lengkap pengguna |\n| `employee_id` | `string` | ID karyawan (harus unik) |\n| `email` | `string` | Alamat email valid (harus unik) |\n| `password` | `string` | Password baru, minimal 8 karakter |\n| `position` | `string` | Jabatan/posisi pengguna |\n| `status` | `enum` | `intern` atau `staf` |\n| `date_of_birth` | `date` | Format: `YYYY-MM-DD` |\n\n---\n\n### Contoh Respons\n\n**Status Code:** `200 OK`\n```json\n{\n  \"success\": true,\n  \"message\": \"Data user berhasil diperbarui.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Budi Santoso Updated\",\n    \"employee_id\": \"EMP001\",\n    \"email\": \"budi@example.com\",\n    \"position\": \"Senior Backend Developer\",\n    \"status\": \"staf\",\n    \"date_of_birth\": \"1995-08-17\",\n    \"created_at\": \"2024-01-15T08:00:00.000000Z\",\n    \"updated_at\": \"2024-01-15T10:30:00.000000Z\"\n  }\n}\n```\n\n**Status Code:** `404 Not Found`\n```json\n{\n  \"success\": false,\n  \"message\": \"User tidak ditemukan.\"\n}\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}api/users/1",
+					"host": ["{{base_url}}api"],
+					"path": ["users", "1"]
+				},
+				"description": "## Menghapus User\n\nEndpoint ini digunakan untuk menghapus data pengguna berdasarkan ID.\n\n---\n\n### Detail Endpoint\n\n| Properti | Nilai |\n|----------|-------|\n| **HTTP Method** | `DELETE` |\n| **URL** | `{{base_url}}api/users/{id}` |\n| **Autentikasi** | Tidak diperlukan |\n\n---\n\n### Path Parameter\n\n| Parameter | Tipe | Deskripsi |\n|-----------|------|-----------|\n| `id` | `integer` | ID user yang ingin dihapus |\n\n---\n\n### Contoh Respons\n\n**Status Code:** `200 OK`\n```json\n{\n  \"success\": true,\n  \"message\": \"User berhasil dihapus.\"\n}\n```\n\n**Status Code:** `404 Not Found`\n```json\n{\n  \"success\": false,\n  \"message\": \"User tidak ditemukan.\"\n}\n```"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [""]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [""]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/",
+			"type": "default"
+		}
+	]
+}
