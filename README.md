@@ -13,7 +13,7 @@ API sederhana untuk mengelola data user (CRUD) menggunakan Laravel.
 1. **Clone repo**
 
 ```bash
-git clone <repo-url>
+git clone [<repo-url>](https://github.com/4nndxrzky/user-management-api.git)
 cd manajemen-user-api
 ```
 
@@ -157,7 +157,3 @@ Sisipkan screenshot hasil testing atau dokumentasi API di bawah ini.
 - `database/migrations/` - Skema tabel `users`
 
 ---
-
-## 📄 Lisensi
-
-Proyek ini menggunakan lisensi MIT.
